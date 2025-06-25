@@ -2,25 +2,28 @@
 // sort(): 배열 정렬 함수. 배열 요소들을 원본 배열 자체에서 정렬함 (원본 배열 변경됨)
 // filter(): 배열에서 특정 조건을 만족하는 요소들만 골라내서 새로운 배열로 반환하는 메서드
 
-function List() {
-    const fruits = [{id: 1, name: "apple", calories: 95}, 
-                    {id: 2, name: "orange", calories: 45}, 
-                    {id: 3, name: "banana", calories: 105}, 
-                    {id: 4, name: "coconut", calories: 159}, 
-                    {id: 5, name: "pineapple", calories: 37}];
+import PropTypes from 'prop-types'
 
-    // fruits.sort((a, b) => a.name.localeCompare(b.name));     알파벳 순서
-    // fruits.sort((a, b) => b.name.localeCompare(a.name));     알파벳 반대 순서
-    // fruits.sort((a, b) => a.calories - b.calories);          오름차순 
-    // fruits.sort((a, b) => b.calories - a.calories);          내림차순    
+function List(props) {
+    
+    const category = props.category;
+    const itemList = props.items;
 
-    const lowCalFruits = fruits.filter(fruit => fruit.calories < 100);
+    const listItems = itemList.map(item => <li key={item.id}>
+                                            {item.name}: &nbsp;
+                                            <b>{item.calories}</b></li>);
 
-    const listItems = lowCalFruits.map(lowCalFruit => <li key={lowCalFruit.id}>
-                                            {lowCalFruit.name}: &nbsp;
-                                            <b>{lowCalFruit.calories}</b></li>);
+    return (<>
+                <h3 className="list-category">{category}</h3> 
+                <ol className="list-items">{listItems}</ol>
+            </> );
+}
 
-    return (<ol>{listItems}</ol>);
+List.propTypes = {
+    category: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({id: PropTypes.number, 
+                                            name: PropTypes.string, 
+                                            calories: PropTypes.number}))
 }
 
 export default List
