@@ -1,14 +1,10 @@
-// conditional rendering = allows you to control what gets rendered
-//                         in your application based on certain conditions
-//                         (show, hide, or change components)
+// rendering lists
 
-import UserGreeting from "./UserGreeting.jsx";
+import List from "./List.jsx";
 
 function App() {
   return(
-    <>
-      <UserGreeting isLoggedIn={false} username="janghun" />
-    </>
+    <List />
   );
 }
 
