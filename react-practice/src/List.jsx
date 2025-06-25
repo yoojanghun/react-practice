@@ -2,14 +2,14 @@
 // sort(): 배열 정렬 함수. 배열 요소들을 원본 배열 자체에서 정렬함 (원본 배열 변경됨)
 // filter(): 배열에서 특정 조건을 만족하는 요소들만 골라내서 새로운 배열로 반환하는 메서드
 
+// 요즘 버전에는 아래와 같이 props라는 매개변수 사용 X
+// 아래와 같은 함수형 컴포넌트에서 props 매개변수 없이 prop을 사용하려면, default props를 매개변수에서 반드시 정의해야 함
+
 import PropTypes from 'prop-types'
 
-function List(props) {
+function List({ category = "Unknown Category", items = [] }) {
     
-    const category = props.category;
-    const itemList = props.items;
-
-    const listItems = itemList.map(item => <li key={item.id}>
+    const listItems = items.map(item => <li key={item.id}>
                                             {item.name}: &nbsp;
                                             <b>{item.calories}</b></li>);
 
