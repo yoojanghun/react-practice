@@ -1,5 +1,6 @@
 // map(): 원본 배열의 각 요소에 대해 콜백 함수를 실행한 결과로 새로운 배열을 반환
 // sort(): 배열 정렬 함수. 배열 요소들을 원본 배열 자체에서 정렬함 (원본 배열 변경됨)
+// filter(): 배열에서 특정 조건을 만족하는 요소들만 골라내서 새로운 배열로 반환하는 메서드
 
 function List() {
     const fruits = [{id: 1, name: "apple", calories: 95}, 
@@ -13,10 +14,11 @@ function List() {
     // fruits.sort((a, b) => a.calories - b.calories);          오름차순 
     // fruits.sort((a, b) => b.calories - a.calories);          내림차순    
 
+    const lowCalFruits = fruits.filter(fruit => fruit.calories < 100);
 
-    const listItems = fruits.map(fruit => <li key={fruit.id}>
-                                            {fruit.name}: &nbsp;
-                                            <b>{fruit.calories}</b></li>);
+    const listItems = lowCalFruits.map(lowCalFruit => <li key={lowCalFruit.id}>
+                                            {lowCalFruit.name}: &nbsp;
+                                            <b>{lowCalFruit.calories}</b></li>);
 
     return (<ol>{listItems}</ol>);
 }
