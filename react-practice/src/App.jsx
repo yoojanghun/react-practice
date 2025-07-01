@@ -1,10 +1,10 @@
-import Button from "./Click/Button.jsx"
+import UseState from "./UseState/UseState.jsx";
 
 function App() {
   
   return(
     <>
-      <Button />
+      <UseState />
     </>
   );
 }
