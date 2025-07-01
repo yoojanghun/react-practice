@@ -1,10 +1,10 @@
-import UseState from "./UseState/UseState.jsx";
+import Counter from "./Counter/Counter.jsx";
 
 function App() {
   
   return(
     <>
-      <UseState />
+      <Counter />
     </>
   );
 }
