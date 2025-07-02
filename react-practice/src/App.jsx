@@ -1,10 +1,10 @@
-import Updater from "./Updater/Updater.jsx";
+import UpdateObject from "./UpdateObject/UpdateObject.jsx";
 
 function App() {
   
   return(
     <>
-      <Updater />
+      <UpdateObject />
     </>
   );
 }
