@@ -12,25 +12,51 @@ import { useState, useEffect, useRef } from "react";
 
 function UseRef() {
 
-    const ref = useRef(0);      // ref에는 current라는 속성을 가진 객체가 전달된다
-                                // ref를 사용하면 다시 렌더링되지 않기 때문에 useEffect에서 console.log는 한 번만 적용됨
-                                // (strict 모드가 없을 때)
-
+    const inputRef1 = useRef(null);
+    const inputRef2 = useRef(null);
+    const inputRef3 = useRef(null);
+    
     useEffect(() => {
         console.log("Component Rendered");
     })
 
-    function handleClick() {
-        ref.current++;
-        console.log(ref.current);
+    function handleClick1() {
+        inputRef1.current.focus();
+        inputRef1.current.style.backgroundColor = "yellow";
+        inputRef2.current.style.backgroundColor = "";
+        inputRef3.current.style.backgroundColor = "";
+    }
+
+    function handleClick2() {
+        inputRef2.current.focus();
+        inputRef1.current.style.backgroundColor = "";
+        inputRef2.current.style.backgroundColor = "yellow";
+        inputRef3.current.style.backgroundColor = "";
+    }
+
+    function handleClick3() {
+        inputRef3.current.focus();
+        inputRef1.current.style.backgroundColor = "";
+        inputRef2.current.style.backgroundColor = "";
+        inputRef3.current.style.backgroundColor = "yellow";
     }
 
     return(
         <div>
-            <button onClick={handleClick}>
-                Click me!!
+            <button onClick={handleClick1}>
+                Click me 1
             </button>
-            <input type="text" />
+            <input ref={inputRef1} type="text" /> <br />
+
+            <button onClick={handleClick2}>
+                Click me 2
+            </button>
+            <input ref={inputRef2} type="text" /> <br />
+
+            <button onClick={handleClick3}>
+                Click me 3
+            </button>
+            <input ref={inputRef3} type="text" /> <br />
         </div>
     );
 }
