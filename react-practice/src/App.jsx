@@ -1,10 +1,10 @@
-import UpdateArrayOfObject from "./UpdateArrayOfObject/UpdateArrayOfObject.jsx";
+import UseEffect from "./UseEffect/UseEffect.jsx";
 
 function App() {
   
   return(
     <>
-      <UpdateArrayOfObject />
+      <UseEffect />
     </>
   );
 }
