@@ -1,10 +1,10 @@
-import DigitalClock from "./digitalClockApp/DigitalClock.jsx";
+import ComponentA from "./UseContext/ComponentA.jsx";
 
 function App() {
   
   return(
     <>
-      <DigitalClock />
+      <ComponentA />
     </>
   );
 }
