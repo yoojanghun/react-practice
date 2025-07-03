@@ -1,10 +1,10 @@
-import UseEffect from "./UseEffect/UseEffect.jsx";
+import DigitalClock from "./digitalClockApp/DigitalClock.jsx";
 
 function App() {
   
   return(
     <>
-      <UseEffect />
+      <DigitalClock />
     </>
   );
 }
