@@ -22,42 +22,34 @@ import { useState, useEffect } from "react";
 
 function UseEffect() {
 
-    const [count, setCount] = useState(0);
-    const [color, setColor] = useState("green");
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+
+    // useEffect 없으면 console.log 엄청 많이 호출됨
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        console.log("Event Listener added");
+
+        return () => {
+            // clean up 함수
+            window.removeEventListener("resize", handleResize);
+            console.log("Event Listener removed");
+        }
+    }, []);
 
     useEffect(() => {
-        document.title = `Count: ${count} ${color}`;
-    })
-
-    useEffect(() => {
-        document.querySelector("#mount").textContent = `Count: ${count} ${color}`;
-    }, [])
-
-    useEffect(() => {
-        document.querySelector("#change").textContent = `Count: ${count} ${color}`;
-    }, [count])         // count가 변할 때만 update됨
-
-    function addCount() {
-        setCount(c => c + 1);
+        document.title = `Size: ${width} X ${height}`;
+    }, [width, height]);        // width 또는 height가 변할 때만 title이 update됨
+    
+    function handleResize() {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
     }
 
-    function subtractCount() {
-        setCount(c => c - 1);
-    }
-
-    function changeColor() {
-        setColor(c => c === "green" ? "red" : "green");
-    }
     return (
         <>
-            <p>Count : {count}</p>
-            <h1 id="mount">Count : {count}</h1>
-            <button onClick={addCount}>Add</button>
-            <button onClick={subtractCount}>Subtract</button> <br />
-
-            <p style={{color: color}}>Count : {count}</p>
-            <h1 id="change">Count : {count}</h1>
-            <button onClick={changeColor}>Change Color</button>
+            <p>Window Width : {width}px</p>
+            <p>Window Height : {height}px</p>
         </>
     );
 }
