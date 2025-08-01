@@ -1,10 +1,10 @@
-import StopWatch from "./StopWatch/StopWatch.jsx";
+import UseMemo from "./UseMemo/UseMemo";
 
 function App() {
   
   return(
     <>
-      <StopWatch />
+      <UseMemo />
     </>
   );
 }
